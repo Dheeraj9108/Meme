@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.card img{
+  max-height:540px;
+  
+}
+.card-body{
+  z-index: 1;
+}
+.card-img-top{
+  border-radius: 0px;
+}
