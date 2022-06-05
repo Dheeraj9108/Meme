@@ -33,7 +33,8 @@ router.post('/createUser', [
             name: req.body.name,
             description:req.body.description,
             email: req.body.email,
-            password: hashed_Password
+            password: hashed_Password,
+            img:req.body.img,
         })
         const data = {
             user:{
@@ -91,10 +92,13 @@ router.post('/login', [
 // rout 3 :: update user profile login required here id = user_id
 router.put('/updateprofile/:id',fetchuser,async(req,res)=>{
     const {name,description} = req.body;
+   
     try{
         const newProfile = {};
         if(name){newProfile.name = name};
         if(description){newProfile.description = description}
+
+       
 
         let userto_update = await User.findById(req.params.id);
         if(!userto_update){
@@ -103,8 +107,7 @@ router.put('/updateprofile/:id',fetchuser,async(req,res)=>{
         if(userto_update._id.toString()!== req.user.id){
             return res.status(401).send('Not Allowed');
         }
-        // console.log(post.user.toString());
-        // console.log(post.user);
+      
         userto_update = await User.findByIdAndUpdate(req.params.id,{$set:newProfile},{new:true});
         res.json(userto_update);
     }catch(error){
@@ -133,6 +136,17 @@ router.put('/updatepassword/:id',fetchuser,async(req,res)=>{
     }catch(error){
         console.log(error);
         res.status(500).send("Some error occured");
+    }
+})
+
+router.get('/getUser',fetchuser, async(req,res)=>{
+    try {
+        const userId = req.user;
+        const user = await User.find(userId).select("-password");
+        res.json(user);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Internal Server Error");
     }
 })
 module.exports = router

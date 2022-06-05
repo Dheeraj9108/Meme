@@ -10,68 +10,72 @@ const Postitem = () => {
         <>
             <div className="card my-4 " >
                 <div className="card-body ">
-                    <h5 className="card-title">Poojary Dheeraj Kumar</h5>
-                    <p className="card-text">Posted 1 year ago</p>
+                    <div className="d-flex justify-content-between">
+                        <h5 className="card-title">Poojary Dheeraj Kumar</h5>
+                        <p className="card-text">Posted 1 year ago</p>
+                    </div>
                 </div>
                 <img src={post} className="img-fluid card-img-top" alt="..." />
                 <div className="card-body">
                     <div className="d-flex align-items-center justify-content-between">
                         <a href="/" className="btn btn-primary">Likes 1k</a>
-                        <Comment/>
+                        <Comment />
                     </div>
-                    <Commentform/> 
-                    <Commentitem/>
+                    <Commentform />
+                    <Commentitem />
                 </div>
             </div>
             <div className="card my-4 " >
                 <div className="card-body ">
-                    <h5 className="card-title">Poojary Dheeraj Kumar</h5>
-                    <p className="card-text">Posted 1 year ago</p>
+                    <div className="d-flex justify-content-between">
+                        <h5 className="card-title">Poojary Dheeraj Kumar</h5>
+                        <p className="card-text">Posted 1 year ago</p>
+                    </div>
                 </div>
                 <img src={post} className="img-fluid card-img-top" alt="..." />
                 <div className="card-body">
                     <div className="d-flex align-items-center justify-content-between">
                         <a href="/" className="btn btn-primary">Likes 1k</a>
-                        <Comment/>
+                        <Comment />
                     </div>
-                    <Commentform/> 
-                    <Commentitem/>
+                    <Commentform />
+                    <Commentitem />
                 </div>
             </div>
             <div className="card my-4 " >
                 <div className="card-body ">
-                    <h5 className="card-title">Poojary Dheeraj Kumar</h5>
-                    <p className="card-text">Posted 1 year ago</p>
+                    <div className="d-flex justify-content-between">
+                        <h5 className="card-title">Poojary Dheeraj Kumar</h5>
+                        <p className="card-text">Posted 1 year ago</p>
+                    </div>
                 </div>
                 <img src={post} className="img-fluid card-img-top" alt="..." />
                 <div className="card-body">
                     <div className="d-flex align-items-center justify-content-between">
                         <a href="/" className="btn btn-primary">Likes 1k</a>
-                        <Comment/>
+                        <Comment />
                     </div>
-                    <Commentform/> 
-                    <Commentitem/>
+                    <Commentform />
+                    <Commentitem />
                 </div>
             </div>
             <div className="card my-4 " >
                 <div className="card-body ">
-                    <h5 className="card-title">Poojary Dheeraj Kumar</h5>
-                    <p className="card-text">Posted 1 year ago</p>
+                    <div className="d-flex justify-content-between">
+                        <h5 className="card-title">Poojary Dheeraj Kumar</h5>
+                        <p className="card-text">Posted 1 year ago</p>
+                    </div>
                 </div>
                 <img src={post} className="img-fluid card-img-top" alt="..." />
                 <div className="card-body">
                     <div className="d-flex align-items-center justify-content-between">
                         <a href="/" className="btn btn-primary">Likes 1k</a>
-                        <Comment/>
+                        <Comment />
                     </div>
-                    <Commentform/> 
-                    <Commentitem/>
+                    <Commentform />
+                    <Commentitem />
                 </div>
             </div>
-           
-            
-           
-           
         </>
     )
 }

@@ -5,11 +5,11 @@ const postSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'user'
     },
-    title:{
+    description:{
         type:String,
         required:true
     },
-    description:{
+    img:{
         type:String,
         required:true
     }

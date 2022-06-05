@@ -6,7 +6,6 @@ const Post = require('../models/post');
 
 //rouet 1 :: add post, login reqired
 router.post('/addpost',fetchuser,[
-    body('title','Enter a valid title').isLength({min:3}),
     body('description','Enter a valid description').isLength({min:5})
 ], async (req,res)=>{
     const errors = validationResult(req);
@@ -14,9 +13,9 @@ router.post('/addpost',fetchuser,[
         return res.status(400).json({errors:errors.array()});
     }
     try {
-        const {title,description} = req.body;
+        const {description,img} = req.body;
         const post = new Post({
-          title,description,user:req.user.id
+          description,img,user:req.user.id
         })
         //or Post.create() method to be used
         const savedPost = await post.save();

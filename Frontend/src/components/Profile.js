@@ -1,25 +1,44 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Postitem from "./Postitem"
-
+import PostModal from "./Modal/PostModal"
+import profileContext from '../context/profile/profilecontext'
+import ProfileModal from './Modal/ProfileModal'
 const Profile = () => {
+
+    const context = useContext(profileContext);
+    const {profile,getProfile} = context;
+
+    
+
+    useEffect(()=>{
+        getProfile();
+         // eslint-disable-next-line 
+    },[])
+
+
+
     return (
         <>
             <div className="card mb-3 " >
                 <div className="row g-0">
                     <div className="col-md-4 d-flex align-items-center justify-content-center">
-                        <img src="https://cdn4.buysellads.net/uu/1/3386/1525189943-38523.png" className="img-fluid " alt="..." />
+                        <img  src={profile.img} className="profile_img img-fluid " alt="..." />
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
-                            <h5 className="card-title">Poojary Dheeraj Kumar</h5>
-                            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut autem accusantium assumenda unde magnam maxime quisquam nobis consectetur enim quaerat dolorem nesciunt voluptas, in quibusdam. Quia ea alias dolorem provident, atque eveniet sed tenetur repudiandae mollitia ullam architecto recusandae facere repellendus voluptatibus veniam. Amet incidunt eius quisquam eveniet! Totam, nulla.</p>
+                            <h5 className="card-title">{profile.name}</h5>
+                            <p className="card-text">{profile.description}</p>
                             <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                         </div>
                     </div>
-                    <div className="my-3 d-flex align-items-center justify-content-center">
-                        <button className='btn btn-primary'>Edit Profile</button>
+                    <div className="my-3 d-flex align-items-center justify-content-around">
+                    <button  type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profileModal">
+                        Edit Profile</button>
+                        <ProfileModal />
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Upload New Post</button>
+                        <PostModal/>
                     </div>
-
                 </div>
             </div>
             {/* <hr /> */}
