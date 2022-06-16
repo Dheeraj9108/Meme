@@ -3,19 +3,38 @@ const router = express.Router();
 const {body,validationResult} = require('express-validator');
 const fetchuser = require('../middleware/fetchuser');
 const Post = require('../models/post');
+var multer = require('multer');
+var path = require('path');
+
+
+var storage = multer.diskStorage({
+    destination:function (req,file,cb){
+        cb(null,'../uploads');
+    },
+    filename:function(req,file,cb){
+        cb(null,file.fieldname+"-"+Date.now+path.extname(file.originalname));
+    }
+})
+var upload = multer({
+    storage:storage
+})
+
 
 //rouet 1 :: add post, login reqired
-router.post('/addpost',fetchuser,[
+router.post('/addpost',upload.single('userPost'),[
     body('description','Enter a valid description').isLength({min:5})
 ], async (req,res)=>{
+    const file = req.file;
+    console.log(file);
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(400).json({errors:errors.array()});
     }
     try {
         const {description,img} = req.body;
+        console.log(img);
         const post = new Post({
-          description,img,user:req.user.id
+          description,img:`http://localhost:7000/profile/${img}`,user:req.user.id
         })
         //or Post.create() method to be used
         const savedPost = await post.save();
