@@ -5,8 +5,8 @@ import axios from 'axios';
 
 const PostModal = (props) => {
 
-    // const context = useContext(postcontext);
-    // const {addPost} = context; 
+    const context = useContext(postcontext);
+    const {posts,setPosts} = context; 
     // const [selectedfile,setselectedfile] = useState(null);
 
 
@@ -56,14 +56,16 @@ const PostModal = (props) => {
         formdata.append('avatar', userInfo.file);
         formdata.append('description', desc);
         console.log(desc)
-        const res = await axios.post("http://localhost:7000/api/post/addpost", formdata, {
+        const response = await axios.post("http://localhost:7000/api/post/addpost", formdata, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI5Y2EyM2IzZWViMjk2YWMyZTY3NjdmIn0sImlhdCI6MTY1NDQzMjMxNX0.rDGlaJXatOcyEXFucXNJNp1NMMUz5L607oedqG_AKaY"
             },
         });
-        console.log(res.data);
+        setPosts(posts.concat(response.data));
+        console.log(response);
         document.getElementById('file_upload').value = '';
+        document.getElementById('desc').value = '';
     }
 
 
