@@ -9,10 +9,10 @@ var path = require('path');
 
 var storage = multer.diskStorage({
     destination:function (req,file,cb){
-        cb(null,'../uploads');
+        cb(null,'./uploads');
     },
     filename:function(req,file,cb){
-        cb(null,file.fieldname+"-"+Date.now+path.extname(file.originalname));
+        cb(null,file.fieldname+"-"+Date.now()+path.extname(file.originalname));
     }
 })
 var upload = multer({
@@ -25,24 +25,22 @@ router.post('/addpost',upload.single('userPost'),[
     body('description','Enter a valid description').isLength({min:5})
 ], async (req,res)=>{
     const file = req.file;
-    console.log(file);
-    const errors = validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(400).json({errors:errors.array()});
-    }
+    // console.log(req)
     try {
-        const {description,img} = req.body;
-        console.log(img);
+        const { description, obj } = req.body;
+
+        // console.log(req)
         const post = new Post({
-          description,img:`http://localhost:7000/profile/${img}`,user:req.user.id
+            description, img: `http://localhost:7000/profile/${file.filename}`, user:obj
         })
-        //or Post.create() method to be used
-        const savedPost = await post.save();
-        res.json(savedPost);
+        //     //or Post.create() method to be used
+            const savedPost = await post.save();
+            res.json(savedPost);
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Some error Occured");
     }
+    // res.json('hellow');
 })
 // route 2 :: delete post login required
 router.delete('/deletepost/:id',fetchuser,async(req,res)=>{
