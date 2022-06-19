@@ -3,16 +3,20 @@ import Postitem from "./Postitem"
 import PostModal from "./Modal/PostModal"
 import profileContext from '../context/profile/profilecontext'
 import ProfileModal from './Modal/ProfileModal'
+import postcontext from '../context/post/postcontext'
 const Profile = () => {
 
-    const context = useContext(profileContext);
-    const { profile, getProfile } = context;
+    const Pofile_context = useContext(profileContext);
+    const Post_context = useContext(postcontext);
+    const { profile, getProfile } = Pofile_context;
+    const { posts,fetchpost } = Post_context;
     const [id,setId] = useState(null);
 
 
 
     useEffect(() => {
         getProfile();
+        fetchpost();
         // eslint-disable-next-line 
     }, [])
 
@@ -59,7 +63,10 @@ const Profile = () => {
                 <h1>Your Posts </h1>
             </div>
             {/* <hr /> */}
-            <Postitem />
+            {posts.map((post) => {
+                return <Postitem post={post}/>
+            })}
+
         </>
     )
 }
