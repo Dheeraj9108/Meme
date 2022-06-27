@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect} from 'react'
 import Postitem from "./Postitem"
 import PostModal from "./Modal/PostModal"
 import profileContext from '../context/profile/profilecontext'
@@ -10,7 +10,7 @@ const Profile = () => {
     const Post_context = useContext(postcontext);
     const { profile, getProfile } = Pofile_context;
     const { posts,fetchpost } = Post_context;
-    const [id,setId] = useState(null);
+    // const [id,setId] = useState(null);
 
 
 
@@ -20,18 +20,18 @@ const Profile = () => {
         // eslint-disable-next-line 
     }, [])
 
-    const idClick = async () => {
-        const res = await fetch('http://localhost:7000/id', {
-            method: 'GET',
-            headers: {
-                "Content-type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI5Y2EyM2IzZWViMjk2YWMyZTY3NjdmIn0sImlhdCI6MTY1NDQzMjMxNX0.rDGlaJXatOcyEXFucXNJNp1NMMUz5L607oedqG_AKaY"
-            }
-        })
-        const data = await res.json();
-        console.log(data);
-        setId(data);
-    }
+    // const idClick = async () => {
+    //     const res = await fetch('http://localhost:7000/id', {
+    //         method: 'GET',
+    //         headers: {
+    //             "Content-type": "application/json",
+    //             "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjI5Y2EyM2IzZWViMjk2YWMyZTY3NjdmIn0sImlhdCI6MTY1NDQzMjMxNX0.rDGlaJXatOcyEXFucXNJNp1NMMUz5L607oedqG_AKaY"
+    //         }
+    //     })
+    //     const data = await res.json();
+    //     console.log(data);
+    //     setId(data);
+    // }
 
 
     return (
@@ -52,9 +52,9 @@ const Profile = () => {
                         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profileModal">
                             Edit Profile</button>
                         <ProfileModal />
-                        <button type="button" className="btn btn-primary" onClick={idClick} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" className="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Upload New Post</button>
-                        <PostModal id={id}/>
+                        <PostModal />
                     </div>
                 </div>
             </div>

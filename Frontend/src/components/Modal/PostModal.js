@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import postcontext from '../../context/post/postcontext'
 import axios from 'axios';
 
-const PostModal = (props) => {
+const PostModal = () => {
 
     const context = useContext(postcontext);
     const {posts,setPosts} = context; 

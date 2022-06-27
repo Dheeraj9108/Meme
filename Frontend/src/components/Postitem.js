@@ -1,6 +1,4 @@
 import React from 'react'
-import Commentform from './Commentform'
-import Commentitem from './Commentitem'
 import Comment from './Comment'
 // import post from "./post.jpg"
 
@@ -20,10 +18,9 @@ const Postitem = (props) => {
                 <div className="card-body">
                     <div className="d-flex align-items-center justify-content-between">
                         <a href="/" className="btn btn-primary">Likes 1k</a>
-                        <Comment />
+                        <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Comments 777</button>
                     </div>
-                    <Commentform />
-                    <Commentitem />
+                    <Comment post = {post} />
                 </div>
             </div>
            

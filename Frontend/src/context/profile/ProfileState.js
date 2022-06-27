@@ -5,6 +5,7 @@ const ProfileState = (props) => {
   const host = 'http://localhost:7000'
   const initialProfile = []
   const [profile, setProfile] = useState(initialProfile);
+ 
 
   const getProfile = async () => {
     const response = await fetch(`${host}/api/auth/getUser`, {
@@ -16,7 +17,6 @@ const ProfileState = (props) => {
     })
     const json = await response.json();
     setProfile(json[0]);
-    
   }
   const editProfile = async (name,description) => {
     const response = await fetch(`${host}/api/auth/updateprofile/629ca23b3eeb296ac2e6767f`, {
@@ -31,7 +31,7 @@ const ProfileState = (props) => {
     setProfile(json);
   }
   return (
-    <profileContext.Provider value={{ profile, getProfile, editProfile }}>
+    <profileContext.Provider value={{ profile, getProfile, editProfile ,setProfile}}>
       {props.children}
     </profileContext.Provider>
   )

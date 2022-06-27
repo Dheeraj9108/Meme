@@ -79,6 +79,7 @@ app.post('/', (req, res) => {
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/post', require('./routes/post'));
+app.use('/api/comment', require('./routes/comment'));
 
 app.listen(7000, () => {
     console.log("Srever is listening at port 7000");

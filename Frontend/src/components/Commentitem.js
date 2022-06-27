@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Commentitem = () => {
+const Commentitem = (props) => {
     return (
         <>
             <div className="collapse" id="collapseExample">
@@ -9,10 +9,11 @@ const Commentitem = () => {
                         <h5 className="card-title">Poojary Dheeraj Kumar</h5>
                         <p className="card-text">1 year ago</p>
                     </div>
-                    Super Picture ❤
+                   {/* {props.cmnt.comment} */}
+                   {props.cmnt.comment}
                 </div>
             </div>
-            <div className="collapse" id="collapseExample">
+            {/* <div className="collapse" id="collapseExample">
                 <div className="card card-body">
                     <div className='d-flex justify-content-between'>
                         <h5 className="card-title">Poojary Dheeraj Kumar</h5>
@@ -20,8 +21,8 @@ const Commentitem = () => {
                     </div>
                     Super Picture ❤
                 </div>
-            </div>
-            <div className="collapse" id="collapseExample">
+            </div> */}
+            {/* <div className="collapse" id="collapseExample">
                 <div className="card card-body">
                     <div className='d-flex justify-content-between'>
                         <h5 className="card-title">Poojary Dheeraj Kumar</h5>
@@ -29,8 +30,8 @@ const Commentitem = () => {
                     </div>
                     Super Picture ❤
                 </div>
-            </div>
-            <div className="collapse" id="collapseExample">
+            </div> */}
+            {/* <div className="collapse" id="collapseExample">
                 <div className="card card-body">
                     <div className='d-flex justify-content-between'>
                         <h5 className="card-title">Poojary Dheeraj Kumar</h5>
@@ -38,8 +39,8 @@ const Commentitem = () => {
                     </div>
                     Super Picture ❤
                 </div>
-            </div>
-            <div className="collapse" id="collapseExample">
+            </div> */}
+            {/* <div className="collapse" id="collapseExample">
                 <div className="card card-body">
                     <div className='d-flex justify-content-between'>
                         <h5 className="card-title">Poojary Dheeraj Kumar</h5>
@@ -47,7 +48,7 @@ const Commentitem = () => {
                     </div>
                     Super Picture ❤
                 </div>
-            </div>
+            </div> */}
         </>
 
     )

@@ -29,7 +29,7 @@ router.post('/addpost',fetchuser,upload.single('avatar'), [
     try {
         // console.log(req)
         const post = new Post({
-            description:req.body.description, img: `http://localhost:7000/profile/${file.filename}`, user:req.user.id
+            description:req.body.description, img: `http://localhost:7000/profile/${file.filename}`, user:req.user.id,comments:[]
         })
         //     //or Post.create() method to be used
         const savedPost = await post.save();

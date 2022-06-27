@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useContext,useEffect } from 'react'
+import commentContext from '../context/comment/conmmentContext'
+import Commentform from './Commentform'
+import Commentitem from './Commentitem'
 
-const Comment = () => {
+const Comment = (props) => {
+
+    const cmnt = useContext(commentContext);
+    // const { comment,getComment } = cmnt;
+
+
+    // useEffect(() => {
+    //     getComment(props.post._id);
+    //     // eslint-disable-next-line 
+    // }, [])
+
+    const postid = props.post._id
     return (
         <div>
-            <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Comments 777
-            </button>
+            <Commentform postid={postid}/>
+            {/* <Commentitem /> */}
+            {props.post.comments.map((cmnt) => {
+                return <Commentitem postid={postid} cmnt={cmnt}/>
+            })}
         </div>
     )
 }
