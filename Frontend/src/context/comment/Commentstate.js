@@ -1,4 +1,5 @@
 import React, { useState,useContext } from 'react'
+// import { post } from '../../../../Backend/routes/auth';
 import postcontext from '../post/postcontext';
 import commentContext from './conmmentContext';
 
@@ -24,7 +25,8 @@ const Commentstate = (props) => {
             body: JSON.stringify({ comments })
         })
         const json = await response.json();
-        setComment(comment.concat(json));
+        console.log(json);
+        setPosts(json)
     }
     const getComment = async (postid) => {
         const res = await fetch(`http://localhost:7000/api/comment/getComment/${postid}`, {

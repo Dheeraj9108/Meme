@@ -39,6 +39,34 @@ router.post('/addpost',fetchuser,upload.single('avatar'), [
         res.status(500).send("Some error Occured");
     }
 })
+router.post('/updatepost/:id',fetchuser,upload.single('avatar'), [], async (req, res) => {
+    // const file = req.file
+    console.log(req.body);
+    try {
+        // console.log(req)
+        // const post = new Post({
+        //    comments:comments.concat(req.body.comment)
+        // })
+
+        let postto_update = await Post.findById(req.params.id);
+        if(!postto_update){
+            return res.status(404).send('Not found');
+        }
+        // // if(postto_update._id.toString()!== req.user.id){
+        // //     return res.status(401).send('Not Allowed');
+        // // }
+        // postto_update.comments.concat(req.body.comment);
+
+        commentedPost = await Post.findByIdAndUpdate(req.params.id,{
+            "$push":{
+                "comments":req.body
+            }},{new:true})
+        res.json(postto_update);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error Occured");
+    }
+})
 // route 2 :: delete post login required
 router.delete('/deletepost/:id', fetchuser, async (req, res) => {
     try {

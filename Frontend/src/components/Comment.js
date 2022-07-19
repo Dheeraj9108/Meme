@@ -6,7 +6,8 @@ import Commentitem from './Commentitem'
 const Comment = (props) => {
 
     const cmnt = useContext(commentContext);
-    // const { comment,getComment } = cmnt;
+    const { comment,getComment } = cmnt;
+    // console.log(comment);
 
 
     // useEffect(() => {
