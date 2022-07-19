@@ -18,7 +18,7 @@ const Postitem = (props) => {
                 <div className="card-body">
                     <div className="d-flex align-items-center justify-content-between">
                         <a href="/" className="btn btn-primary">Likes 1k</a>
-                        <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Comments 777</button>
+                        <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target={`#dheeraj${post._id}`} aria-expanded="false" aria-controls="collapseExample">Comments 777</button>
                     </div>
                     <Comment post = {post} />
                 </div>

@@ -15,6 +15,7 @@ const Comment = (props) => {
     // }, [])
 
     const postid = props.post._id
+    console.log(postid);
     return (
         <div>
             <Commentform postid={postid}/>

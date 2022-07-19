@@ -17,7 +17,7 @@ const Commentform = (props) => {
         alert("Commented Successfully")
     }
     return (
-        <div className="collapse" id="collapseExample">
+        <div className="collapse" id={`dheeraj${props.postid}`}>
             <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Comment... </label>
                 <input type="text" className="form-control" name="cmnt" onChange={handleChange} id="exampleInputEmail1" placeholder='comment.....' aria-describedby="emailHelp" />

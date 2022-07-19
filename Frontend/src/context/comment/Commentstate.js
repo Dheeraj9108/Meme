@@ -9,7 +9,7 @@ const Commentstate = (props) => {
     const { posts,setPosts } = Post_context;
 
     const initialState = []
-    const [comment, setComment] = useState(initialState);
+    const [comment, setComment] = useState(posts.comments);
     const postComment = async (postid, comment) => {
 
         const comments = {
@@ -24,7 +24,7 @@ const Commentstate = (props) => {
             body: JSON.stringify({ comments })
         })
         const json = await response.json();
-        setPosts(json);
+        setComment(comment.concat(json));
     }
     const getComment = async (postid) => {
         const res = await fetch(`http://localhost:7000/api/comment/getComment/${postid}`, {
